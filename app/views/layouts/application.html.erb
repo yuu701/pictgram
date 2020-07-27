@@ -10,10 +10,11 @@
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
     <!--alert-%= key %はalert-success、alert-dangerに読み変えられる。Bootstrapのalert-successのcssを適用させるため。-->
     <!--roleは役割。cssの記述。Webアクセシビリティ向上のために入力する。-->
+    <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+    
     <% end %>
     
     <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
@@ -29,7 +30,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
+              <%= link_to new_topic_path do %>
                 <%= image_tag "icons/camera.png" %>
               <% end %>
             </li>
