@@ -13,7 +13,21 @@
             <!--images配下の画像ファイルパスは以下のように記述。-->
             <!--public配下の画像を表示する場合は/から始める。-->
             <%= image_tag topic.image.url %>
-            <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
+            <!--include?はrailsのメソッド。存在しているか確認する時に使用する。-->
+            <!--a = ["a","b","c"]の時-->
+            <!--a.include?("b")  => true-->
+            <!--a.include?("z")  => false-->
+            <% if !topic.favorite_users.include?(current_user) %>
+            <!--params[:topic_id]にtopic.idを入れる-->
+              <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
+                <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
+              <% end %>
+            <% else %>
+              <%= link_to favorites_path(topic_id: topic.id), method: :delete do %>
+                <% image_tag 'icons/heart.png', class: 'topic-index-icon topic-index-icon-red' %>
+              <% end %>
+            <% end %>
+            <%= topic.favorite_users.count %>
             <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
             <p class="topic-text">
               <%= topic.description %>

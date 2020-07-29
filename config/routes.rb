@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
-  get 'topics/new'
-  get 'sessions/new'
   
   root  'pages#index'        #URLの指定がない時
   get 'pages/help'
   
+  get 'topics/new'
+  get 'sessions/new'
+  
   resources :users
   resources :topics
+  
+  get 'favorites/index'
+  post '/favorites', to: 'favorites#create'
+  delete '/favorites', to: 'favorites#destroy'
   
   get     '/login',  to: 'sessions#new'
   post    '/login',  to: 'sessions#create'

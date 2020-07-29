@@ -15,7 +15,10 @@ module Pictgram
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-    # エラーが出ないようにする
+    
+    # エラーが出ないようにするための記述
+    # carrierwaveを入れたので、uploaderがどこにあるのかを指定しなければいけない。
+    # これはappの下にuploadersがあるという意味。
       config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
   end
 end

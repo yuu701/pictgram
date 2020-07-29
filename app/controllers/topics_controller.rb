@@ -1,6 +1,8 @@
 class TopicsController < ApplicationController
   def index
-    @topics = Topic.all
+    # includesメソッドは指定したモデルのデータを一括で取得しキャッシュしておくことで
+    # 「N＋1問題」を防ぐことができる。
+    @topics = Topic.all.includes(:favorite_users)
   end
   
   def new
@@ -10,7 +12,7 @@ class TopicsController < ApplicationController
   def create
     # current_userに紐づくtopicsのインスタンスを生成
     # topicsはuserモデルのhas_manyで定義されている
-    # topicsはメソッド
+    # topicsはリレーションだがメソッドのように使える。
     @topic = current_user.topics.new(topic_params)
     
     if @topic.save

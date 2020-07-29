@@ -13,4 +13,7 @@ class User < ApplicationRecord
   
   # １つのUserは複数のtopicを持つ。has_manyの場合はRailsの命名規則で必ずモデル名を複数形にする。
   has_many :topics
+  has_many :favorites
+  # throughを使うことでログインしているユーザーがいいねしているtopicを全て取得できる。
+  has_many :favorite_topics, through: :favorites, source: 'topic'
 end
