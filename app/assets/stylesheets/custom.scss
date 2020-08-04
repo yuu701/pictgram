@@ -144,3 +144,16 @@ h1, h2 {
     }
   }
 }
+
+.comments-new-wrapper {
+  width: 100vw;
+  height: 100vh;
+ 
+  .comments-new-container {
+    padding-top: 220px;
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+  }
+}

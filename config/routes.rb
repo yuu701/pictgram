@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get 'sessions/new'
   
   resources :users
-  resources :topics
+  resources :topics do
+    resources :comments
+  end
   
   get 'favorites/index'
   post '/favorites', to: 'favorites#create'
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
   get     '/login',  to: 'sessions#new'
   post    '/login',  to: 'sessions#create'
   delete  '/logout', to: 'sessions#destroy'
+  
   
   
   

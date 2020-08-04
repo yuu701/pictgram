@@ -2,7 +2,10 @@ class TopicsController < ApplicationController
   def index
     # includesメソッドは指定したモデルのデータを一括で取得しキャッシュしておくことで
     # 「N＋1問題」を防ぐことができる。
-    @topics = Topic.all.includes(:favorite_users)
+    # 本当は配列を渡すのでincludes([:favorite_users, :comments])だけれど、省略して記述できる。
+    @topics = Topic.all.includes(:favorite_users, :comments)
+    # puts "aaa"
+    # puts Topic.all.includes(:favorite_users, :comments).to_sql
   end
   
   def new

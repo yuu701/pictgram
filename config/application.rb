@@ -19,6 +19,10 @@ module Pictgram
     # エラーが出ないようにするための記述
     # carrierwaveを入れたので、uploaderがどこにあるのかを指定しなければいけない。
     # これはappの下にuploadersがあるという意味。
+    # config.autoload_pathsはディレクトリの一覧のこと。
+    # サーバーを再起動しなくても読み込む。
+    # Dirはディレクトリのクラスオブジェクト。
+    # ディレクトリ一覧に右側を追加する。
       config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
   end
 end
