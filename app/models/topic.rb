@@ -13,8 +13,8 @@ class Topic < ApplicationRecord
   mount_uploader :image, ImageUploader
   
   has_many :favorites
-  favorite_usersはただの名前。Railsの作法から外れているのでsourceでモデルを指定している。
-  favoriteモデルに紐づいているuserモデルの中のカラムはuser_idしかないのでuser_idと紐付けられる。
+  # favorite_usersはただの名前。Railsの作法から外れているのでsourceでモデルを指定している。
+  # favoriteモデルに紐づいているuserモデルの中のカラムはuser_idしかないのでuser_idと紐付けられる。
   has_many :favorite_users, through: :favorites, source: 'user'
   # dependent: :destroy => topic削除されたらcommentsも削除される
   has_many :comments, dependent: :destroy
