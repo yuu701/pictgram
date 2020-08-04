@@ -22,7 +22,12 @@ h1, h2 {
 .top-hero-wrapper {
   width: 100vw;
   height: 100vh;
-  background-image: url('bg-top.png');
+  // background-image: url('bg-top.png');
+  // urlを指定すると本番環境にデプロイした時に正しく表示されない。
+  // キャッシュに悪さされるのを防ぐために、コードが更新されるごとにファイル名にユニークな拡張子が付けられるため。
+  // bg-top.pngはbg-top.png-***.pngという様に拡張子がつけられる。
+  // railsが用意しているimage-urlメソッドを使うことで解決できる。
+  background-image: image-url('bg-top.png');
   background-position: center;
   // background-position:背景画像の初期位置を設定。縦も横も中央に設定の場合。
   background-repeat: no-repeat;
